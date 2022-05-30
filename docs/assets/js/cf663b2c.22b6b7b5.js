@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[323],{583:function(a){a.exports=JSON.parse('{"title":"Animalfarm","slug":"/category/animalfarm","permalink":"/category/animalfarm","navigation":{"previous":{"title":"Homepage","permalink":"/"},"next":{"title":"About","permalink":"/animalfarm/about"}}}')}}]);
