@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[643],{3685:function(e){e.exports=JSON.parse('{"title":"Golf","slug":"/category/golf","permalink":"/category/golf","navigation":{"previous":{"title":"Config","permalink":"/job_resources/animalfarm/config"},"next":{"title":"About","permalink":"/job_resources/golf/about"}}}')}}]);
