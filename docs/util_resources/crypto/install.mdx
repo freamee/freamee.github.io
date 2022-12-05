@@ -1,0 +1,122 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Installation
+
+Installing & dependencies.
+
+## Dependencies
+- [x] Mysql database
+- [x] NodeJS (for installing the dependency files with npm) 
+
+## Install
+1. Unzip the rar file and copy the folder in your server resources folder.
+2. Go into the source-files folder then open up a terminal inside the folder, and type npm install
+3. If you installed the neccessary dependencies you can open the source-files folder with Vscode and edit the neccessary things.
+
+:::warning
+If you have not compiled your code the resource will not start!
+:::
+
+### Paths
+Config (typescript): `source-files/src/shared/editable-config.ts`
+
+Server & Client translations: `source-files/src/shared/translations.ts`
+
+nui/cef translations: `html/js/translations.js`
+
+## Compiling
+There is a folder called **dev** inside the base folder.<br/>
+You have three .bat files.
+
+`installdeps.bat` You only need to run it once, to install the required dependencies, this will create a folder named **node_modules**
+
+`compile.bat` You have to run this, if you want to build the typescript files.
+
+`developer.bat` This is for developing the script, it will automatically rebuild the typescript files if you make a change in any of the .ts files.
+
+## Setting up the config (banking functions)
+<Tabs>
+<TabItem value="default" label="Default">
+
+```lua
+exports('avcrypto_getBank', function(source)
+    return 66666
+end)
+exports('avcrypto_setBank', function(source, amount)
+    print(string.format('%s setBank function is missing.', amount))
+end)
+exports('avcrypto_notification', function(source, message)
+    print(message)
+end)
+```
+
+</TabItem>
+<TabItem value="esx" label="ESX">
+
+```lua
+ESX = nil
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
+exports('avcrypto_getBank', function(source)
+    local Amount = 0
+
+    local xPlayer = ESX.GetPlayerFromId(source)
+    if xPlayer then
+        local Bank = xPlayer.getAccount('bank')
+        if Bank then
+            Amount = Bank.money
+        end
+    end
+
+    return Amount
+end)
+exports('avcrypto_setBank', function(source, amount)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    if xPlayer then
+        xPlayer.setAccountMoney('bank', amount)
+    end
+end)
+exports('avcrypto_notification', function(source, message)
+    -- Your notification export here.
+    print(message)
+end)
+```
+
+</TabItem>
+<TabItem value="qbcore" label="QBCore">
+
+```lua
+local QBCore = exports["qb-core"]:GetCoreObject()
+
+exports('avcrypto_getBank', function(source)
+    local Amount = 0
+
+    local qbPlayer = QBCore.Functions.GetPlayer(source)
+    if qbPlayer then
+        local bank = qbPlayer.Functions.GetMoney("bank")
+        if bank then
+            Amount = bank.money
+        end
+    end
+
+    return Amount
+end)
+exports('avcrypto_setBank', function(source, amount)
+    local qbPlayer = QBCore.Functions.GetPlayer(source)
+    if qbPlayer then
+        qbPlayer.Functions.SetMoney("bank", amount)
+    end
+end)
+exports('avcrypto_notification', function(source, message)
+    -- Your notification export here.
+    print(message)
+end)
+```
+
+</TabItem>
+</Tabs>
