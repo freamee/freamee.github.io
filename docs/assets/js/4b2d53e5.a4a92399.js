@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4643],{3685:function(e){e.exports=JSON.parse('{"title":"Golf","slug":"/category/golf","permalink":"/category/golf","navigation":{"previous":{"title":"Process / Job description","permalink":"/job_resources/distillery/process"},"next":{"title":"About","permalink":"/job_resources/golf/about"}}}')}}]);
