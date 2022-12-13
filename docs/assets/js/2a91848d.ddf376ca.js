@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[316],{7373:function(e){e.exports=JSON.parse('{"title":"Crypto","slug":"/category/crypto","permalink":"/category/crypto","navigation":{"previous":{"title":"Usage","permalink":"/util_resources/clickmenu/usage"},"next":{"title":"About","permalink":"/util_resources/crypto/about"}}}')}}]);
